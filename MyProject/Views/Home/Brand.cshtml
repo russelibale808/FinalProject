@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MyProject.Models.Keyboard>
+@{
+    ViewData["Title"] = @ViewBag.Brand;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewBag.Brand</h1>
+    @foreach (Keyboard k in Model.OrderBy(k => k.Size))
+    {
+        <a class="btn btn-dark btn-lg" asp-action="BrandAndSize" asp-route-brand="@k.Brand" asp-route-size="@k.Size">@k.Size</a>
+    }
+</div>
+<style>
+    body {
+        background-image: url('/images/keyboardbg.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: contain;
+        background-color: #a4bbc1;
+        color: #fff;
+        text-shadow: 1px 1px 10px #fff, 1px 1px 10px #ccc;
+    }
+</style>

@@ -36,6 +36,7 @@ namespace MyProject.Controllers
             }
 
             var keyboard = await _context.Keyboards
+                .Include(k=>k.Images)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (keyboard == null)
             {

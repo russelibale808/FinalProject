@@ -1,12 +1,17 @@
-﻿@{
-    ViewData["Title"] = "Mechanical Keyboards";
+﻿@model IEnumerable<MyProject.Models.Keyboard>
+@{
+    ViewData["Title"] = @ViewBag.Brand ;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Mechanical Keyboards</h1>
-    @foreach (Keyboard k in ViewBag.Brands)
+    <h1 class="display-4">@ViewBag.Brand</h1>
+    <h3>@ViewBag.Size</h3>
+    
+</div>
+<div class="text-center p-3" style="background-color: #ffffff4a; border-radius: 0.9rem; ">
+    @foreach (Keyboard k in Model.OrderBy(k => k.Title))
     {
-        <a class="btn btn-dark btn-lg" asp-action="Brand" asp-route-brand="@k.Brand">@k.Brand</a>
+        <a class="btn btn-dark btn-lg m-2" asp-controller="Keyboards" asp-action="Details" asp-route-id="@k.ID">@k.Title</a>
     }
 </div>
     <style>
